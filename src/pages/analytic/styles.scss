@@ -1,0 +1,44 @@
+.container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 30px rgba(68, 90, 210, 0.04);
+    height: 100%;
+    padding: 20px;
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 30px rgba(68, 90, 210, 0.04);
+      height: 100%;
+      // border: solid 1px #445AD2;
+    }
+
+    .complaintIcon {
+      color: #465def;
+      padding-top: 4px;
+    }
+
+    .menu {
+      color: #292B2C;
+      font-weight: 700;
+      padding-left: 8px;
+    }
+
+    .titleContainer {
+      padding-bottom: 10px;
+
+      .title {
+        color: #292B2C;
+        font-weight: 400;
+        font-size: 28px;
+      }
+
+      .buttonDownload {
+        background-color: #465def ;
+        border-radius: 4px;
+        float: right;
+        text-align: right;
+      }
+    }
+    
+}
