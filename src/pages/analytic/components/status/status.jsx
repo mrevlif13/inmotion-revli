@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col, Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
-import "./styles.scss";
 import { BarChart, Bar, XAxis, YAxis, Legend, CartesianGrid } from "recharts";
+import "./styles.scss";
 
 const data = [
   {
