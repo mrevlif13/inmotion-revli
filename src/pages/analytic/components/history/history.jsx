@@ -11,7 +11,7 @@ const data = [
     closed: 101
   },
   {
-    name: "Agung Hadi Kusuma",
+    name: "Agung Hadi Kusuma Testing",
     open: 20,
     closed: 71
   },
