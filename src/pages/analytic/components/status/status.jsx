@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Row, Col, Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
-import { BarChart, Bar, XAxis, YAxis, Legend, CartesianGrid } from "recharts";
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Legend, CartesianGrid } from "recharts";
 import "./styles.scss";
+import { useReactToPrint } from "react-to-print";
 
 const data = [
   {
@@ -23,8 +24,16 @@ const data = [
 ];
 
 const StatusCard = () => {
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: 'Compaint-by-Status-and-Investigator',
+    onAfterPrint: ()=> alert('Download success')
+  });
+
   return (
-    <div className="containerCard">
+    <div className="containerCard" ref={componentRef}>
       <Row className="titleCard">
         <Col span={12}>
           <span className="title">Compaint by Status and Investigator</span>
@@ -32,37 +41,37 @@ const StatusCard = () => {
         <Col span={12}>
           <Button
             icon={<DownloadOutlined />}
-            href="#"
+            onClick={handlePrint}
             className="buttonSqaure"
           />
         </Col>
       </Row>
-      <div className="barChart">
-        <BarChart
-          width={1200}
-          height={400}
-          data={data}
-          margin={{ top: 10, right: 10, left: 10, bottom: 10 }}
-          barSize={72}
-        >
-          <CartesianGrid strokeDasharray="1" />
-          <XAxis dataKey="name">
-            <label
-              value="Pages of my website"
-              offset={10}
-              position="insideBottom"
+      <div className="barChart" style={{ width: "100%", height: 400 }}>
+        <ResponsiveContainer>
+          <BarChart
+            data={data}
+            margin={{ top: 10, right: 10, left: 10, bottom: 10 }}
+            barSize={72}
+          >
+            <CartesianGrid strokeDasharray="1" />
+            <XAxis dataKey="name">
+              <label
+                value="Pages of my website"
+                offset={10}
+                position="insideBottom"
+              />
+            </XAxis>
+            <YAxis
+              label={{ value: "Total Ticket", angle: -90, position: "insideLeft" }}
             />
-          </XAxis>
-          <YAxis
-            label={{ value: "Total Ticket", angle: -90, position: "insideLeft" }}
-          />
-          <Bar dataKey="open" fill='#DC67AC' stackId="a">
-            <labelList dataKey="name" position="top" />
-          </Bar>
-          <Bar dataKey="closed" fill='#6771DC' stackId="a">
-          </Bar>
-          <Legend />
-        </BarChart>
+            <Bar dataKey="open" fill='#DC67AC' stackId="a">
+              <labelList dataKey="name" position="top" />
+            </Bar>
+            <Bar dataKey="closed" fill='#6771DC' stackId="a">
+            </Bar>
+            <Legend />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
     </div>
   );
