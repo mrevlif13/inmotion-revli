@@ -21,7 +21,7 @@ const Routing = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
     <BrowserRouter>
-      <Layout style={{ minHeight: "100vh", minWidth: "100%" }}>
+      <Layout style={{ minHeight: "100vh",}}>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <img src={Logo} className="logo" alt="" />
 
